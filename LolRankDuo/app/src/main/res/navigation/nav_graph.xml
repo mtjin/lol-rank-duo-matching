@@ -12,7 +12,7 @@
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.mtjin.lolrankduo.views.LoginFragment"
+        android:name="com.mtjin.lolrankduo.views.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 </navigation>
