@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id "androidx.navigation.safeargs"
 }
 
@@ -31,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -50,6 +54,11 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
     // 젯팩 라이브데이터
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
-    // RxKotlin3
-    implementation("io.reactivex.rxjava3:rxkotlin:3.x.y")
+    // RxKotlin3 + RxAndroid
+    implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
+    implementation "io.reactivex.rxjava2:rxkotlin:3.0.0"
+    // ktx + lifecycle
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.fragment:fragment-ktx:1.3.1'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 }
