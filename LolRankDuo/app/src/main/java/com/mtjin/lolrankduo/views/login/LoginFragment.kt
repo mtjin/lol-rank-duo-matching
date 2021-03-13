@@ -1,18 +1,12 @@
 package com.mtjin.lolrankduo.views.login
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.mtjin.lolrankduo.R
+import com.mtjin.lolrankduo.base.BaseFragment
+import com.mtjin.lolrankduo.databinding.FragmentLoginBinding
 
-class LoginFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
+
+    override fun init() {
+        TODO("Not yet implemented")
     }
 }
