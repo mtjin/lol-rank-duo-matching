@@ -48,4 +48,6 @@ dependencies {
     // 젯팩 네비게이션
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
+    // 젯팩 라이브데이터
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
 }
