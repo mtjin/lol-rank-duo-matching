@@ -63,4 +63,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     // Lottie Animation 로띠 애니메이션
     implementation 'com.airbnb.android:lottie:3.0.7'
+    // 엘라스틱 뷰 elastic view
+    implementation "com.github.skydoves:elasticviews:2.0.9"
 }
