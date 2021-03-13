@@ -50,4 +50,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
     // 젯팩 라이브데이터
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+    // RxKotlin3
+    implementation("io.reactivex.rxjava3:rxkotlin:3.x.y")
 }
