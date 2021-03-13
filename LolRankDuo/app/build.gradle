@@ -75,4 +75,6 @@ dependencies {
     implementation "com.github.skydoves:elasticviews:2.0.9"
     // 카카오 로그인
     implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    // koin
+    implementation 'org.koin:koin-androidx-viewmodel:2.1.5'
 }
