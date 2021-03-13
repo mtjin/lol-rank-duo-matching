@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.mtjin.lolrankduo.views.dialog.LottieDialogFragment
-import com.mtjin.nomoneytrip.views.dialog.LottieDialogFragment
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 abstract class BaseActivity<B : ViewDataBinding>(
