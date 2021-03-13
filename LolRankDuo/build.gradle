@@ -21,10 +21,12 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven{
+        maven {
             url "https://maven.google.com"
         }
         maven { url 'https://www.jitpack.io' }
+        /*카카오*/
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
     }
 }
 
