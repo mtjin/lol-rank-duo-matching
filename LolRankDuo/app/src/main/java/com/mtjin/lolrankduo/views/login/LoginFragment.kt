@@ -1,4 +1,4 @@
-package com.mtjin.lolrankduo.views
+package com.mtjin.lolrankduo.views.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
