@@ -2,6 +2,9 @@ package com.mtjin.lolrankduo.di
 
 import android.app.Application
 import com.kakao.auth.*
+import com.mtjin.lolrankduo.di.modules.firebaseModule
+import com.mtjin.lolrankduo.di.modules.repositoryModule
+import com.mtjin.lolrankduo.di.modules.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -23,7 +26,9 @@ class MyApplication : Application() {
             }
             androidContext(this@MyApplication)
             modules(
-
+                repositoryModule,
+                viewModelModule,
+                firebaseModule
             )
         }
     }

@@ -23,6 +23,7 @@
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:launchSingleTop="true"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <dialog
