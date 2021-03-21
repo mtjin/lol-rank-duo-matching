@@ -22,6 +22,7 @@ import com.mtjin.lolrankduo.base.BaseFragment
 import com.mtjin.lolrankduo.data.models.User
 import com.mtjin.lolrankduo.databinding.FragmentLoginBinding
 import com.mtjin.lolrankduo.utils.UserInfo
+import com.mtjin.lolrankduo.utils.extensions.getTimestamp
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
@@ -78,7 +79,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                                         if (task.isSuccessful) {  //새 유저 로그인
                                             UserInfo.uuid = auth.currentUser.uid.toString()
                                             viewModel.insertUser(
-                                                User(id = email, fcm = UserInfo.fcm)
+                                                User(
+                                                    id = email,
+                                                    fcm = UserInfo.fcm,
+                                                    lastLoginTimestamp = getTimestamp()
+                                                )
                                             )
                                         } else {
                                             showToast(getString(R.string.login_fail_msg))
