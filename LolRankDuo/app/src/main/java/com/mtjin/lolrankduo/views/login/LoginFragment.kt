@@ -3,6 +3,7 @@ package com.mtjin.lolrankduo.views.login
 import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -51,13 +52,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private fun initViewModelCallback() {
         with(viewModel) {
             kakaoLogin.observe(this@LoginFragment, Observer {
-                Log.d("AAAAA", "카카오로그인 오픈!!!!!!!")
                 kakaoLogin.value?.addCallback(SessionCallback())
                 kakaoLogin.value?.open(AuthType.KAKAO_LOGIN_ALL, this@LoginFragment)
             })
 
             insertUserResult.observe(this@LoginFragment, Observer {
-                Log.d("AAAAA", "성공!!!!!!!")
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToProfileFragment())
             })
         }
     }
@@ -66,7 +66,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) { //기존 아이디 로그인
-                    UserInfo.uuid = auth.currentUser.uid.toString()
+                    UserInfo.uuid = auth.currentUser.uid
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToProfileFragment())
                     //viewModel.updateFCM()
                 } else {
                     auth.createUserWithEmailAndPassword(email, password)
