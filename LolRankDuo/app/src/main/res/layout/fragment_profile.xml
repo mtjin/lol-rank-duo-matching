@@ -3,6 +3,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.mtjin.lolrankduo.views.profile.ProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
