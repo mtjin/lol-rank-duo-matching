@@ -5,4 +5,15 @@
     <string name="kakao_app_key">27033b06267b681b7e3338ffe8018b54</string>
     <string name="riot_api_key">RGAPI-7357fc32-a1f4-468d-9ba2-5f9e8258becd</string>
     <string name="login_fail_msg">Login Fail</string>
+    <string name="lol_nickname_text">롤 닉네임</string>
+    <string name="age_text">나이</string>
+    <string name="sex_text">성별</string>
+    <string name="my_tear_text">현재 티어</string>
+    <string name="my_position1_text">본인 희망포지션1</string>
+    <string name="my_position2_text">본인 희망포지션2</string>
+    <string name="team_position1_text">팀원 희망포지션1</string>
+    <string name="team_position2_text">팀원 희망포지션2</string>
+    <string name="voice_available_text">음성가능여부</string>
+    <string name="max_50_words_hint">최대 50자</string>
+    <string name="introduce_text">소개</string>
 </resources>

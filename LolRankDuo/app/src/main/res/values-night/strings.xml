@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="login_fail_msg">Login Fail</string>
+    <string name="my_tear_text">현재 티어</string>
+    <string name="my_position1_text">본인 희망포지션1</string>
 </resources>

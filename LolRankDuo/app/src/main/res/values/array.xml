@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sex">
+        <item>남자</item>
+        <item>여자</item>
+    </string-array>
+
+    <string-array name="tears">
+        <item>Iron 4</item>
+        <item>Iron 3</item>
+        <item>Iron 2</item>
+        <item>Iron 1</item>
+        <item>Bronze 4</item>
+        <item>Bronze 3</item>
+        <item>Bronze 2</item>
+        <item>Bronze 1</item>
+        <item>Silver 4</item>
+        <item>Silver 3</item>
+        <item>Silver 2</item>
+        <item>Silver 1</item>
+        <item>Gold 4</item>
+        <item>Gold 3</item>
+        <item>Gold 2</item>
+        <item>Gold 1</item>
+        <item>Platinum 4</item>
+        <item>Platinum 3</item>
+        <item>Platinum 2</item>
+        <item>Platinum 1</item>
+        <item>Diamond 4</item>
+        <item>Diamond 3</item>
+        <item>Diamond 2</item>
+        <item>Diamond 1</item>
+        <item>Master</item>
+        <item>GrandMaster</item>
+        <item>Challenger</item>
+    </string-array>
+
+    <string-array name="positions">
+        <item>탑</item>
+        <item>정글</item>
+        <item>미드</item>
+        <item>원딜</item>
+        <item>서폿</item>
+    </string-array>
+
+    <string-array name="vocies">
+        <item>가능</item>
+        <item>불가능</item>
+    </string-array>
+</resources>
