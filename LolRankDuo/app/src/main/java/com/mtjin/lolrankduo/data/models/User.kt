@@ -11,7 +11,7 @@ data class User(
     var age: String = "", // 나이
     var introduce: String = "", // 소개글
     var lastLoginTimestamp: Long = 0, //마지막 접속 시간
-    var relativePositionList: List<String> = ArrayList(), //내가 원하는 상대 포지션
+    var teamPositionList: List<String> = ArrayList(), //내가 원하는 팀원 포지션
     var voice: Boolean = false, //보이스 가능 여부
     var fcm: String = "", // FCM 토큰
     var historyIdList: List<String> = ArrayList() // 이미 나와 이어진 아이디들 (재매칭안되게 하기위해)
