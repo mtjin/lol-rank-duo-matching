@@ -36,6 +36,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="24dp"
+                    android:onClick="@{()->vm.pickImage()}"
                     android:src="@drawable/ic_baseline_add_photo_alternate_24"
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="1dp"
