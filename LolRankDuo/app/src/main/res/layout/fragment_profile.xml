@@ -9,255 +9,271 @@
             type="com.mtjin.lolrankduo.views.profile.ProfileViewModel" />
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/title_toolbar" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_profile_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="24dp"
-                android:src="@drawable/ic_baseline_add_photo_alternate_24"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="1dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_game_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_12dp"
-                android:text="@string/lol_nickname_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_profile_image" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_profile_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_game_id"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_40dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_game_id"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_game_id" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_game_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_12dp"
+                    android:text="@string/lol_nickname_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_profile_image" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/age_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_game_id" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_game_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_40dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_game_id"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_game_id" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_age"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:inputType="numberDecimal"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_age"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_age" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/age_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_game_id" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/sex_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_age" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_age"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_age"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_age" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_sex"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/height_30dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:entries="@array/sex"
-                android:spinnerMode="dropdown"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_sex"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_sex" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/sex_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_age" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_tear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/my_tear_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_sex" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_sex"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:entries="@array/sex"
+                    android:spinnerMode="dropdown"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_sex"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_sex" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_tear"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/height_30dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:entries="@array/tears"
-                android:spinnerMode="dialog"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_tear"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_tear" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_tear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/my_tear_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sex" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_my_position1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/my_position1_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_tear" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_tear"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:entries="@array/tears"
+                    android:spinnerMode="dialog"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_tear"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_tear" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_my_position1"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/height_30dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:entries="@array/positions"
-                android:spinnerMode="dialog"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_my_position1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_my_position1" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_my_position1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/my_position1_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_tear" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_my_position2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/my_position2_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_my_position1" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_my_position1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:entries="@array/positions"
+                    android:spinnerMode="dialog"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_my_position1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_my_position1" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_my_position2"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/height_30dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:entries="@array/positions"
-                android:spinnerMode="dialog"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_my_position2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_my_position2" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_my_position2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/my_position2_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_position1" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_team_position1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/team_position1_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_my_position2" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_my_position2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:entries="@array/positions"
+                    android:spinnerMode="dialog"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_my_position2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_my_position2" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_team_position1"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/height_30dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:entries="@array/positions"
-                android:spinnerMode="dialog"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_team_position1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_team_position1" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_team_position1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/team_position1_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_position2" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_team_position2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/team_position2_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_team_position1" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_team_position1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:entries="@array/positions"
+                    android:spinnerMode="dialog"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_team_position1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_team_position1" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_team_position2"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/height_30dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:entries="@array/positions"
-                android:spinnerMode="dialog"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_team_position2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_team_position2" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_team_position2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/team_position2_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_team_position1" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_voice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/voice_available_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_team_position2" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_team_position2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:entries="@array/positions"
+                    android:spinnerMode="dialog"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_team_position2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_team_position2" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_voice"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/height_30dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:entries="@array/vocies"
-                android:spinnerMode="dropdown"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_voice"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_voice" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_voice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/voice_available_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_team_position2" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_introduce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_28dp"
-                android:text="@string/introduce_text"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintStart_toStartOf="@id/tv_game_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_voice" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_voice"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/height_30dp"
+                    android:layout_marginEnd="@dimen/margin_16dp"
+                    android:entries="@array/vocies"
+                    android:spinnerMode="dropdown"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_voice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/et_game_id"
+                    app:layout_constraintTop_toTopOf="@id/tv_voice" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_introduce"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_16dp"
-                android:hint="@string/max_50_words_hint"
-                android:maxLength="50"
-                android:textSize="@dimen/text_size_12dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_introduce"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/et_game_id"
-                app:layout_constraintTop_toTopOf="@id/tv_introduce" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_introduce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_28dp"
+                    android:text="@string/introduce_text"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_game_id"
+                    app:layout_constraintTop_toBottomOf="@id/tv_voice" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_introduce"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_12dp"
+                    android:hint="@string/max_50_words_hint"
+                    android:maxLength="50"
+                    android:padding="@dimen/padding_8dp"
+                    android:textSize="@dimen/text_size_12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/et_game_id"
+                    app:layout_constraintStart_toStartOf="@id/tv_introduce"
+                    app:layout_constraintTop_toBottomOf="@id/tv_introduce" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

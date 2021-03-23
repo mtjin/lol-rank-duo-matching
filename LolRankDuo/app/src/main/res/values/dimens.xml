@@ -12,4 +12,6 @@
     <dimen name="height_30dp">30dp</dimen>
     <dimen name="margin_36dp">36dp</dimen>
     <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="height_1dp">1dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
 </resources>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_bar_layout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/appbar_layout_height_56dp"
@@ -24,12 +23,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16dp"
                 android:gravity="center_vertical"
+                android:text="프로필"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="프로필" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_1dp"
+                android:background="@color/colorGrayC8C8"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.CollapsingToolbarLayout>
