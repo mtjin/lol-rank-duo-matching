@@ -1,7 +1,8 @@
 package com.mtjin.lolrankduo.views.profile
 
 import android.content.Intent
-import android.net.Uri
+import android.provider.MediaStore
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import com.mtjin.lolrankduo.R
@@ -14,19 +15,23 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
 
     private val viewModel: ProfileViewModel by viewModel()
     private val getContent =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
-            binding.ivProfileImage.setImageURI(uri)
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            binding.ivProfileImage.setImageURI(result.data?.data)
         }
 
     override fun init() {
         binding.vm = viewModel
+        binding.toolbar.profileVm = viewModel
         initViewModelCallback()
     }
 
     private fun initViewModelCallback() {
         with(viewModel) {
             pickImage.observe(this@ProfileFragment, Observer {
-                getContent.launch(Intent.ACTION_PICK)
+                val intent = Intent(Intent.ACTION_PICK)
+                intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                intent.type = "image/*"
+                getContent.launch(intent)
             })
         }
     }
