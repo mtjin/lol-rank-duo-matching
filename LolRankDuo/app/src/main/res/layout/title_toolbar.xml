@@ -11,6 +11,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="프로필 설정" />
 
+    <com.skydoves.elasticviews.ElasticImageView
+        android:id="@+id/iv_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        app:imageView_duration="500"
+        app:imageView_scale="0.9"
+        app:layout_constraintBottom_toBottomOf="@id/tb_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tb_toolbar"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_1dp"
