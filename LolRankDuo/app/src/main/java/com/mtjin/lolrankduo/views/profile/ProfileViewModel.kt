@@ -3,11 +3,12 @@ package com.mtjin.lolrankduo.views.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mtjin.lolrankduo.base.BaseViewModel
+import com.mtjin.lolrankduo.data.profile.ProfileRepository
 import com.mtjin.lolrankduo.utils.SingleLiveEvent
 
-class ProfileViewModel : BaseViewModel() {
-    var gameId = MutableLiveData<String>("")
-    var age = MutableLiveData<String>()
+class ProfileViewModel(private val repository: ProfileRepository) : BaseViewModel() {
+    var gameId = MutableLiveData("")
+    var age = MutableLiveData("")
 
     private val _pickImage: SingleLiveEvent<Boolean> = SingleLiveEvent()
     private val _ageEmpty: SingleLiveEvent<Boolean> = SingleLiveEvent()
