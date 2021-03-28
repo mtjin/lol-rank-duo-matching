@@ -15,8 +15,12 @@ class ProfileRepositoryImpl(
     private val db: FirebaseFirestore,
     private val storage: StorageReference
 ) : ProfileRepository {
-    override fun uploadProfileImage(imageUri: Uri): Single<String> {
+    override fun uploadProfileImage(imageUri: Uri?): Single<String> {
         return Single.create { emitter ->
+            if (imageUri == null) {
+                emitter.onSuccess("")
+                return@create
+            }
             val storageRef = storage.child("${UserInfo.uuid}.png")
             val uploadTask = storageRef.putFile(imageUri)
             uploadTask.continueWithTask { task ->
@@ -35,7 +39,7 @@ class ProfileRepositoryImpl(
         }
     }
 
-    override fun updateProfileInfo(user: User): Completable {
+    override fun updateProfileInfo(user: User, imageUrl : String): Completable {
         return Completable.create { emitter ->
             db.collection(DB_USER)
                 .document(user.id)

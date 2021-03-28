@@ -6,7 +6,10 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.mtjin.lolrankduo.R
 import com.mtjin.lolrankduo.base.BaseFragment
+import com.mtjin.lolrankduo.data.models.User
 import com.mtjin.lolrankduo.databinding.FragmentProfileBinding
+import com.mtjin.lolrankduo.utils.UserInfo
+import com.mtjin.lolrankduo.utils.extensions.getTimestamp
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -16,6 +19,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
     private val getImage =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             binding.ivProfileImage.setImageURI(result.data?.data)
+            result.data?.data?.let { viewModel.setImageUri(it) }
         }
 
     override fun init() {
@@ -40,6 +44,34 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
             ageEmpty.observe(this@ProfileFragment, {
                 showToast("나이를 적어주세요")
             })
+
+            initUserInfo.observe(this@ProfileFragment, {
+                val positionList = ArrayList<String>()
+                positionList.add(binding.spMyPosition1.selectedItem.toString())
+                positionList.add(binding.spMyPosition2.selectedItem.toString())
+                val teamPositionList = ArrayList<String>()
+                positionList.add(binding.spTeamPosition1.selectedItem.toString())
+                positionList.add(binding.spTeamPosition2.selectedItem.toString())
+                viewModel.setUserInfo(
+                    User(
+                        id = UserInfo.uuid,
+                        gameId = viewModel.gameId.value.toString(),
+                        profileImage = UserInfo.profileImage,
+                        positionList = positionList,
+                        sex = binding.spSex.selectedItem.toString(),
+                        tear = binding.spTear.selectedItem.toString(),
+                        age = viewModel.age.value.toString(),
+                        introduce = binding.etIntroduce.toString(),
+                        lastLoginTimestamp = getTimestamp(),
+                        teamPositionList = teamPositionList,
+                        voice = binding.spVoice.selectedItem.toString() == "가능",
+                        fcm = UserInfo.fcm,
+                        historyIdList = UserInfo.historyIdList,
+                        recommend = UserInfo.recommend
+                    )
+                )
+            })
+
             isLottieLoading.observe(this@ProfileFragment, { loading ->
                 if (loading) showProgressDialog()
                 else hideProgressDialog()
