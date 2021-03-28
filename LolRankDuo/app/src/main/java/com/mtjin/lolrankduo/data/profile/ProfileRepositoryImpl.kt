@@ -3,8 +3,12 @@ package com.mtjin.lolrankduo.data.profile
 import android.net.Uri
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
+import com.mtjin.lolrankduo.data.models.User
+import com.mtjin.lolrankduo.utils.DB_USER
 import com.mtjin.lolrankduo.utils.UserInfo
 import com.mtjin.lolrankduo.utils.constants.ERR_UPLOAD_IMAGE
+import com.mtjin.lolrankduo.utils.extensions.serializeToMap
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
 class ProfileRepositoryImpl(
@@ -30,4 +34,18 @@ class ProfileRepositoryImpl(
             }
         }
     }
+
+    override fun updateProfileInfo(user: User): Completable {
+        return Completable.create { emitter ->
+            db.collection(DB_USER)
+                .document(user.id)
+                .update(user.serializeToMap())
+                .addOnSuccessListener {
+                    emitter.onComplete()
+                }.addOnFailureListener {
+                    emitter.onError(it)
+                }
+        }
+    }
+
 }
