@@ -40,6 +40,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
             ageEmpty.observe(this@ProfileFragment, {
                 showToast("나이를 적어주세요")
             })
+            isLottieLoading.observe(this@ProfileFragment, { loading ->
+                if (loading) showProgressDialog()
+                else hideProgressDialog()
+            })
         }
     }
 }
