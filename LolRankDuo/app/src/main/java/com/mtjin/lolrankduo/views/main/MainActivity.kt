@@ -1,4 +1,4 @@
-package com.mtjin.lolrankduo
+package com.mtjin.lolrankduo.views.main
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.mtjin.lolrankduo.R
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 

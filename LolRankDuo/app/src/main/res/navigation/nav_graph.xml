@@ -7,7 +7,7 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.mtjin.lolrankduo.MainActivity"
+        android:name="com.mtjin.lolrankduo.views.main.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
