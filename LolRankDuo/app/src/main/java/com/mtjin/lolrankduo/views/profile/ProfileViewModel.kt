@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class ProfileViewModel(private val repository: ProfileRepository) : BaseViewModel() {
     var gameId = MutableLiveData("")
     var age = MutableLiveData("")
-    private lateinit var imageUri: Uri
+    private var imageUri: Uri? = null
     var user: User = User()
 
     private val _pickImage: SingleLiveEvent<Boolean> = SingleLiveEvent()
