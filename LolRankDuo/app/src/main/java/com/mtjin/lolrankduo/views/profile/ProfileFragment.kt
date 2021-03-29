@@ -2,7 +2,6 @@ package com.mtjin.lolrankduo.views.profile
 
 import android.content.Intent
 import android.provider.MediaStore
-import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
@@ -64,26 +63,26 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
                 positionList.add(binding.spMyPosition1.selectedItem.toString())
                 positionList.add(binding.spMyPosition2.selectedItem.toString())
                 val teamPositionList = ArrayList<String>()
-                positionList.add(binding.spTeamPosition1.selectedItem.toString())
-                positionList.add(binding.spTeamPosition2.selectedItem.toString())
-                val user = User(
-                    id = UserInfo.uuid,
-                    gameId = viewModel.gameId.value.toString(),
-                    profileImage = UserInfo.profileImage,
-                    positionList = positionList,
-                    sex = binding.spSex.selectedItem.toString(),
-                    tear = binding.spTear.selectedItem.toString(),
-                    age = viewModel.age.value.toString(),
-                    introduce = binding.etIntroduce.text.toString(),
-                    lastLoginTimestamp = getTimestamp(),
-                    teamPositionList = teamPositionList,
-                    voice = binding.spVoice.selectedItem.toString() == "가능",
-                    fcm = UserInfo.fcm,
-                    historyIdList = UserInfo.historyIdList,
-                    recommend = UserInfo.recommend
+                teamPositionList.add(binding.spTeamPosition1.selectedItem.toString())
+                teamPositionList.add(binding.spTeamPosition2.selectedItem.toString())
+                viewModel.setUserInfo(
+                    User(
+                        id = UserInfo.uuid,
+                        gameId = viewModel.gameId.value.toString(),
+                        profileImage = UserInfo.profileImage,
+                        positionList = positionList,
+                        sex = binding.spSex.selectedItem.toString(),
+                        tear = binding.spTear.selectedItem.toString(),
+                        age = viewModel.age.value.toString(),
+                        introduce = binding.etIntroduce.text.toString(),
+                        lastLoginTimestamp = getTimestamp(),
+                        teamPositionList = teamPositionList,
+                        voice = binding.spVoice.selectedItem.toString() == "가능",
+                        fcm = UserInfo.fcm,
+                        historyIdList = UserInfo.historyIdList,
+                        recommend = UserInfo.recommend
+                    )
                 )
-                viewModel.setUserInfo(user)
-                Log.d("AAAAAA", user.toString())
             })
 
             editProfileSuccess.observe(this@ProfileFragment, {
