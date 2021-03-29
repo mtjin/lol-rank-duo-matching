@@ -16,4 +16,8 @@
     <string name="voice_available_text">음성가능여부</string>
     <string name="max_50_words_hint">최대 50자</string>
     <string name="introduce_text">소개</string>
+    <string name="bottom_nav1_text">듀오매칭</string>
+    <string name="bottom_nav2_text">친구</string>
+    <string name="bottom_nav3_text">채팅</string>
+    <string name="bottom_nav4_text">프로필</string>
 </resources>

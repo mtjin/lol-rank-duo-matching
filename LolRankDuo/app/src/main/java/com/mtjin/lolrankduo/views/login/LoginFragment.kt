@@ -23,6 +23,7 @@ import com.mtjin.lolrankduo.data.models.User
 import com.mtjin.lolrankduo.databinding.FragmentLoginBinding
 import com.mtjin.lolrankduo.utils.UserInfo
 import com.mtjin.lolrankduo.utils.extensions.getTimestamp
+import com.mtjin.lolrankduo.views.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
@@ -38,6 +39,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         override fun onSessionOpenFailed(exception: KakaoException) {
             Log.e(TAG, "sessionCallback onSessionOpenFailed()", exception)
         }
+    }
+
+    private fun initNavigation() {
+        findNavController().graph.startDestination = R.id.bottom_nav_1
+        (activity as MainActivity).initNavigation()
     }
 
     override fun init() {
@@ -58,7 +64,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             })
 
             insertUserResult.observe(this@LoginFragment, Observer {
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToProfileFragment())
+                findNavController().navigate(
+                    LoginFragmentDirections.actionLoginFragmentToProfileFragment(
+                        0
+                    )
+                )
             })
         }
     }
@@ -68,7 +78,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) { //기존 아이디 로그인
                     UserInfo.uuid = auth.currentUser.uid
-                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToProfileFragment())
+                    findNavController().navigate(
+                        LoginFragmentDirections.actionLoginFragmentToProfileFragment(
+                            0
+                        )
+                    )
                     //viewModel.updateFCM()
                 } else {
                     auth.createUserWithEmailAndPassword(email, password)
@@ -80,7 +94,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                                             UserInfo.uuid = auth.currentUser.uid.toString()
                                             viewModel.insertUser(
                                                 User(
-                                                    id = email,
+                                                    id = UserInfo.uuid,
                                                     fcm = UserInfo.fcm,
                                                     lastLoginTimestamp = getTimestamp()
                                                 )

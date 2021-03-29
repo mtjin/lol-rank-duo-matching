@@ -2,20 +2,26 @@ package com.mtjin.lolrankduo.views.profile
 
 import android.content.Intent
 import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.mtjin.lolrankduo.R
 import com.mtjin.lolrankduo.base.BaseFragment
 import com.mtjin.lolrankduo.data.models.User
 import com.mtjin.lolrankduo.databinding.FragmentProfileBinding
 import com.mtjin.lolrankduo.utils.UserInfo
 import com.mtjin.lolrankduo.utils.extensions.getTimestamp
+import com.mtjin.lolrankduo.views.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
     private val viewModel: ProfileViewModel by viewModel()
+    private val sageArgs: ProfileFragmentArgs by navArgs() // 0:로그인, 1:나머지
+
     private val getImage =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             binding.ivProfileImage.setImageURI(result.data?.data)
@@ -26,6 +32,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
         binding.vm = viewModel
         binding.toolbar.profileVm = viewModel
         initViewModelCallback()
+        initNavigation()
+    }
+
+    private fun initNavigation() {
+        if (sageArgs.fromWhere == 0) {
+            findNavController().graph.startDestination = R.id.bottom_nav_1
+            (activity as MainActivity).initNavigation()
+        }
     }
 
     private fun initViewModelCallback() {
@@ -52,23 +66,29 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
                 val teamPositionList = ArrayList<String>()
                 positionList.add(binding.spTeamPosition1.selectedItem.toString())
                 positionList.add(binding.spTeamPosition2.selectedItem.toString())
-                viewModel.setUserInfo(
-                    User(
-                        id = UserInfo.uuid,
-                        gameId = viewModel.gameId.value.toString(),
-                        profileImage = UserInfo.profileImage,
-                        positionList = positionList,
-                        sex = binding.spSex.selectedItem.toString(),
-                        tear = binding.spTear.selectedItem.toString(),
-                        age = viewModel.age.value.toString(),
-                        introduce = binding.etIntroduce.toString(),
-                        lastLoginTimestamp = getTimestamp(),
-                        teamPositionList = teamPositionList,
-                        voice = binding.spVoice.selectedItem.toString() == "가능",
-                        fcm = UserInfo.fcm,
-                        historyIdList = UserInfo.historyIdList,
-                        recommend = UserInfo.recommend
-                    )
+                val user = User(
+                    id = UserInfo.uuid,
+                    gameId = viewModel.gameId.value.toString(),
+                    profileImage = UserInfo.profileImage,
+                    positionList = positionList,
+                    sex = binding.spSex.selectedItem.toString(),
+                    tear = binding.spTear.selectedItem.toString(),
+                    age = viewModel.age.value.toString(),
+                    introduce = binding.etIntroduce.text.toString(),
+                    lastLoginTimestamp = getTimestamp(),
+                    teamPositionList = teamPositionList,
+                    voice = binding.spVoice.selectedItem.toString() == "가능",
+                    fcm = UserInfo.fcm,
+                    historyIdList = UserInfo.historyIdList,
+                    recommend = UserInfo.recommend
+                )
+                viewModel.setUserInfo(user)
+                Log.d("AAAAAA", user.toString())
+            })
+
+            editProfileSuccess.observe(this@ProfileFragment, {
+                findNavController().navigate(
+                    ProfileFragmentDirections.actionProfileFragmentToMatchFragment()
                 )
             })
 

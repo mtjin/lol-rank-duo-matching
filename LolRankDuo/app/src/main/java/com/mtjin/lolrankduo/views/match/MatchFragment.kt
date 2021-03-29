@@ -7,6 +7,6 @@ import com.mtjin.lolrankduo.databinding.FragmentMatchBinding
 
 class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match) {
     override fun init() {
-        
+
     }
 }

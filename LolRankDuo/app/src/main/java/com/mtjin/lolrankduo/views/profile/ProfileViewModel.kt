@@ -21,11 +21,13 @@ class ProfileViewModel(private val repository: ProfileRepository) : BaseViewMode
     private val _ageEmpty: SingleLiveEvent<Boolean> = SingleLiveEvent()
     private val _gameIdEmpty: SingleLiveEvent<Boolean> = SingleLiveEvent()
     private val _initUserInfo: SingleLiveEvent<Unit> = SingleLiveEvent()
+    private val _editProfileSuccess: SingleLiveEvent<Boolean> = SingleLiveEvent()
 
     val pickImage: LiveData<Boolean> get() = _pickImage
     val ageEmpty: LiveData<Boolean> get() = _ageEmpty
     val gameIdEmpty: LiveData<Boolean> get() = _gameIdEmpty
     val initUserInfo: LiveData<Unit> get() = _initUserInfo
+    val editProfileSuccess: LiveData<Boolean> get() = _editProfileSuccess
 
     fun pickImage() {
         _pickImage.call()
@@ -59,10 +61,10 @@ class ProfileViewModel(private val repository: ProfileRepository) : BaseViewMode
                     .doAfterTerminate { hideLottieProgress() }
                     .subscribeBy(
                         onComplete = {
-
+                            _editProfileSuccess.value = true
                         },
                         onError = {
-
+                            _editProfileSuccess.value = false
                         }
                     )
             }

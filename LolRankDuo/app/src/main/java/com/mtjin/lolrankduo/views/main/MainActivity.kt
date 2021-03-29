@@ -1,42 +1,28 @@
 package com.mtjin.lolrankduo.views.main
 
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.mtjin.lolrankduo.R
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
+import com.mtjin.lolrankduo.base.BaseActivity
+import com.mtjin.lolrankduo.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        getHashKey()
+        initNavigation()
     }
 
+    fun initNavigation() {
+        val navController = findNavController(R.id.main_nav_host)
+        binding.mainBottomNavigation.setupWithNavController(navController)
 
-    private fun getHashKey() {
-        var packageInfo: PackageInfo? = null
-        try {
-            packageInfo =
-                packageManager.getPackageInfo(
-                    packageName,
-                    PackageManager.GET_SIGNATURES
-                )
-        } catch (e: PackageManager.NameNotFoundException) {
-            e.printStackTrace()
-        }
-        if (packageInfo == null) Log.e("KeyHash", "KeyHash:null")
-        for (signature in packageInfo!!.signatures) {
-            try {
-                val md: MessageDigest = MessageDigest.getInstance("SHA")
-                md.update(signature.toByteArray())
-                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT))
-            } catch (e: NoSuchAlgorithmException) {
-                Log.e("KeyHash", "Unable to get MessageDigest. signature=$signature", e)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.bottom_nav_1 || destination.id == R.id.bottom_nav_2 || destination.id == R.id.bottom_nav_3 || destination.id == R.id.bottom_nav_4) {
+                binding.mainBottomNavigation.visibility = View.VISIBLE
+            } else {
+                binding.mainBottomNavigation.visibility = View.GONE
             }
         }
     }

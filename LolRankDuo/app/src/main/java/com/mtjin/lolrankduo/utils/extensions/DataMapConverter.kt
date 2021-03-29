@@ -5,12 +5,12 @@ import com.google.gson.reflect.TypeToken
 
 val gson = Gson()
 
-fun <T> T.serializeToMap(): Map<String, Any> {
+fun <T> T.serializeToMap(): HashMap<String, Any> {
     return convert()
 }
 
 //convert a map to a data class
-inline fun <reified T> Map<String, Any>.toDataClass(): T {
+inline fun <reified T> HashMap<String, Any>.toDataClass(): T {
     return convert()
 }
 

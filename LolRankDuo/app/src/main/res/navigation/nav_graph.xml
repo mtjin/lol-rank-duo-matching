@@ -14,18 +14,21 @@
         android:id="@+id/loginFragment"
         android:name="com.mtjin.lolrankduo.views.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_profileFragment"
             app:destination="@id/profileFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.mtjin.lolrankduo.views.splash.SplashFragment"
-        android:label="SplashFragment" >
+        android:label="SplashFragment">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -41,15 +44,30 @@
         android:id="@+id/profileFragment"
         android:name="com.mtjin.lolrankduo.views.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="fromWhere"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_profileFragment_to_matchFragment"
+            app:destination="@id/matchFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.mtjin.lolrankduo.ChatFragment"
+        android:name="com.mtjin.lolrankduo.views.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/matchFragment"
-        android:name="com.mtjin.lolrankduo.MatchFragment"
+        android:name="com.mtjin.lolrankduo.views.match.MatchFragment"
         android:label="fragment_match"
         tools:layout="@layout/fragment_match" />
+    <fragment
+        android:id="@+id/friendFragment"
+        android:name="com.mtjin.lolrankduo.views.friend.FriendFragment"
+        android:label="fragment_friend"
+        tools:layout="@layout/fragment_friend" />
 </navigation>

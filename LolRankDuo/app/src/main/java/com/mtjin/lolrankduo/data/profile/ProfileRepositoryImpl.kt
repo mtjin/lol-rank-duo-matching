@@ -1,6 +1,7 @@
 package com.mtjin.lolrankduo.data.profile
 
 import android.net.Uri
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 import com.mtjin.lolrankduo.data.models.User
@@ -39,11 +40,12 @@ class ProfileRepositoryImpl(
         }
     }
 
-    override fun updateProfileInfo(user: User, imageUrl : String): Completable {
+    override fun updateProfileInfo(user: User, imageUrl: String): Completable {
         return Completable.create { emitter ->
+            val userMap = user.serializeToMap()
             db.collection(DB_USER)
                 .document(user.id)
-                .update(user.serializeToMap())
+                .update(userMap)
                 .addOnSuccessListener {
                     emitter.onComplete()
                 }.addOnFailureListener {

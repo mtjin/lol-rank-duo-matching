@@ -7,7 +7,7 @@ import com.mtjin.lolrankduo.databinding.FragmentFriendBinding
 
 class FriendFragment : BaseFragment<FragmentFriendBinding>(R.layout.fragment_friend) {
     override fun init() {
-        
+
     }
 
 }
