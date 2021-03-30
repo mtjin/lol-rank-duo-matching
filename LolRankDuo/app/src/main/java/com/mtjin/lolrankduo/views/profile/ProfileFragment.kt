@@ -5,21 +5,18 @@ import android.provider.MediaStore
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.mtjin.lolrankduo.R
 import com.mtjin.lolrankduo.base.BaseFragment
 import com.mtjin.lolrankduo.data.models.User
 import com.mtjin.lolrankduo.databinding.FragmentProfileBinding
 import com.mtjin.lolrankduo.utils.UserInfo
 import com.mtjin.lolrankduo.utils.extensions.getTimestamp
-import com.mtjin.lolrankduo.views.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
     private val viewModel: ProfileViewModel by viewModel()
-    private val sageArgs: ProfileFragmentArgs by navArgs() // 0:로그인, 1:나머지
 
     private val getImage =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -31,14 +28,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
         binding.vm = viewModel
         binding.toolbar.profileVm = viewModel
         initViewModelCallback()
-        initNavigation()
-    }
-
-    private fun initNavigation() {
-        if (sageArgs.fromWhere == 0) {
-            findNavController().graph.startDestination = R.id.bottom_nav_1
-            (activity as MainActivity).initNavigation()
-        }
     }
 
     private fun initViewModelCallback() {

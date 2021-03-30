@@ -42,7 +42,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     }
 
     private fun initNavigation() {
-        findNavController().graph.startDestination = R.id.bottom_nav_1
+        findNavController().graph.startDestination = R.id.matchFragment
         (activity as MainActivity).initNavigation()
     }
 
@@ -65,9 +65,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
             insertUserResult.observe(this@LoginFragment, Observer {
                 findNavController().navigate(
-                    LoginFragmentDirections.actionLoginFragmentToProfileFragment(
-                        0
-                    )
+                    LoginFragmentDirections.actionLoginFragmentToMatchFragment()
                 )
             })
         }
@@ -79,9 +77,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                 if (task.isSuccessful) { //기존 아이디 로그인
                     UserInfo.uuid = auth.currentUser.uid
                     findNavController().navigate(
-                        LoginFragmentDirections.actionLoginFragmentToProfileFragment(
-                            0
-                        )
+                        LoginFragmentDirections.actionLoginFragmentToMatchFragment()
                     )
                     //viewModel.updateFCM()
                 } else {

@@ -19,7 +19,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.mainBottomNavigation.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.bottom_nav_1 || destination.id == R.id.bottom_nav_2 || destination.id == R.id.bottom_nav_3 || destination.id == R.id.bottom_nav_4) {
+            if (destination.id == R.id.matchFragment || destination.id == R.id.friendFragment || destination.id == R.id.chatFragment || destination.id == R.id.profileFragment) {
                 binding.mainBottomNavigation.visibility = View.VISIBLE
             } else {
                 binding.mainBottomNavigation.visibility = View.GONE
