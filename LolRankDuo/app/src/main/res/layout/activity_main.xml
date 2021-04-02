@@ -35,11 +35,10 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_bottom_navigation"
             android:layout_width="match_parent"
-            android:visibility="visible"
             android:layout_height="@dimen/height_56dp"
             android:background="@color/colorWhiteBlue"
-            app:itemIconTint="@color/colorWhite"
-            app:itemTextColor="@color/colorWhite"
+            android:visibility="visible"
+            app:itemTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

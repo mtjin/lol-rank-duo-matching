@@ -17,6 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     fun initNavigation() {
         val navController = findNavController(R.id.main_nav_host)
         binding.mainBottomNavigation.setupWithNavController(navController)
+        binding.mainBottomNavigation.itemIconTintList = null
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.matchFragment || destination.id == R.id.friendFragment || destination.id == R.id.chatFragment || destination.id == R.id.profileFragment) {
