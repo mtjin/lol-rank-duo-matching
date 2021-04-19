@@ -20,4 +20,5 @@
     <string name="bottom_nav2_text">친구</string>
     <string name="bottom_nav3_text">채팅</string>
     <string name="bottom_nav4_text">프로필</string>
+    <string name="duo_matching_text">듀오매칭</string>
 </resources>
