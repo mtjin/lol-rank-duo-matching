@@ -15,4 +15,6 @@
     <dimen name="height_1dp">1dp</dimen>
     <dimen name="padding_8dp">8dp</dimen>
     <dimen name="height_56dp">56dp</dimen>
+    <dimen name="height_60dp">60dp</dimen>
+    <dimen name="radius_16dp">16dp</dimen>
 </resources>
