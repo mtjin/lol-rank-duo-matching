@@ -4,7 +4,6 @@ import android.content.Intent
 import android.provider.MediaStore
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.fragment.findNavController
 import com.mtjin.lolrankduo.R
 import com.mtjin.lolrankduo.base.BaseFragment
 import com.mtjin.lolrankduo.data.models.User
@@ -74,10 +73,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
                 )
             })
 
-            editProfileSuccess.observe(this@ProfileFragment, {
-                findNavController().navigate(
-                    ProfileFragmentDirections.actionProfileFragmentToMatchFragment()
-                )
+            editProfileSuccess.observe(this@ProfileFragment, { success->
+                if(!success) showToast(getString(R.string.profile_edit_fail_msg))
             })
 
             isLottieLoading.observe(this@ProfileFragment, { loading ->
