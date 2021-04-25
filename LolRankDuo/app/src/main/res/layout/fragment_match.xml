@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.mtjin.lolrankduo.views.match.MatchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
