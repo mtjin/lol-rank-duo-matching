@@ -7,5 +7,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface ProfileRepository {
     fun uploadProfileImage(imageUri: Uri?): Single<String>
-    fun updateProfileInfo(user: User, imageUrl : String): Completable
+    fun updateProfileInfo(user: User): Completable
 }

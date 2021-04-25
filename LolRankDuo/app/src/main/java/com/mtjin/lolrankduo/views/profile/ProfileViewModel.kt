@@ -55,7 +55,8 @@ class ProfileViewModel(private val repository: ProfileRepository) : BaseViewMode
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .flatMapCompletable { imageUrl ->
-                        repository.updateProfileInfo(user = user, imageUrl = imageUrl)
+                        user.profileImage = imageUrl
+                        repository.updateProfileInfo(user = user)
                     }
                     .doOnSubscribe { showLottieProgress() }
                     .doAfterTerminate { hideLottieProgress() }
