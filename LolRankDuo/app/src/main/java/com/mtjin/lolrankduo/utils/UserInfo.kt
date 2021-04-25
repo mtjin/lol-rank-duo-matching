@@ -1,9 +1,8 @@
 package com.mtjin.lolrankduo.utils
 
+import com.mtjin.lolrankduo.data.models.User
+
+
 object UserInfo {
-    var uuid: String = ""
-    var fcm: String = ""
-    var profileImage: String = ""
-    var historyIdList = ArrayList<String>()
-    var recommend = 0
+    var profile: User = User()
 }
