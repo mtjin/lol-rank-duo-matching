@@ -246,7 +246,7 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/height_30dp"
                     android:layout_marginEnd="@dimen/margin_16dp"
-                    android:entries="@array/vocies"
+                    android:entries="@array/voices"
                     android:spinnerMode="dropdown"
                     android:textSize="@dimen/text_size_12dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_voice"

@@ -43,7 +43,7 @@
         <item>서폿</item>
     </string-array>
 
-    <string-array name="vocies">
+    <string-array name="voices">
         <item>가능</item>
         <item>불가능</item>
     </string-array>

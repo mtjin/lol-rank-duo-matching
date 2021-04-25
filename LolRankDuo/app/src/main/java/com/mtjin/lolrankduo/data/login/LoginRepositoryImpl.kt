@@ -3,7 +3,7 @@ package com.mtjin.lolrankduo.data.login
 import com.google.firebase.firestore.FirebaseFirestore
 import com.kakao.auth.Session
 import com.mtjin.lolrankduo.data.models.User
-import com.mtjin.lolrankduo.utils.DB_USER
+import com.mtjin.lolrankduo.utils.constants.DB_USER
 import io.reactivex.rxjava3.core.Completable
 
 class LoginRepositoryImpl(private val db: FirebaseFirestore) : LoginRepository {

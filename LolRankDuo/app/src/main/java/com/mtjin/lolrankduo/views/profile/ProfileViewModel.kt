@@ -8,6 +8,7 @@ import com.mtjin.lolrankduo.data.models.User
 import com.mtjin.lolrankduo.data.profile.ProfileRepository
 import com.mtjin.lolrankduo.utils.SingleLiveEvent
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -22,12 +23,14 @@ class ProfileViewModel(private val repository: ProfileRepository) : BaseViewMode
     private val _gameIdEmpty: SingleLiveEvent<Boolean> = SingleLiveEvent()
     private val _initUserInfo: SingleLiveEvent<Unit> = SingleLiveEvent()
     private val _editProfileSuccess: SingleLiveEvent<Boolean> = SingleLiveEvent()
+    private val _requestProfileSuccess: SingleLiveEvent<User> = SingleLiveEvent()
 
     val pickImage: LiveData<Boolean> get() = _pickImage
     val ageEmpty: LiveData<Boolean> get() = _ageEmpty
     val gameIdEmpty: LiveData<Boolean> get() = _gameIdEmpty
     val initUserInfo: LiveData<Unit> get() = _initUserInfo
     val editProfileSuccess: LiveData<Boolean> get() = _editProfileSuccess
+    val requestProfileSuccess: LiveData<User> get() = _requestProfileSuccess
 
     fun pickImage() {
         _pickImage.call()
@@ -67,9 +70,24 @@ class ProfileViewModel(private val repository: ProfileRepository) : BaseViewMode
                         onError = {
                             _editProfileSuccess.value = false
                         }
-                    )
+                    ).addTo(compositeDisposable)
             }
         }
+    }
+
+    fun requestProfile() {
+        repository.requestProfile()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onSuccess = {
+                    _requestProfileSuccess.value = it
+                },
+                onError = {
+
+                }
+            )
+            .addTo(compositeDisposable)
     }
 
 }

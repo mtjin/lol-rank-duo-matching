@@ -75,7 +75,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) { //기존 아이디 로그인
-                    UserInfo.uuid = auth.currentUser.uid
+                    UserInfo.profile.id = auth.currentUser.uid
                     findNavController().navigate(
                         LoginFragmentDirections.actionLoginFragmentToMatchFragment()
                     )
@@ -87,11 +87,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                                 auth.signInWithEmailAndPassword(email, password)
                                     .addOnCompleteListener(requireActivity()) { task ->
                                         if (task.isSuccessful) {  //새 유저 로그인
-                                            UserInfo.uuid = auth.currentUser.uid.toString()
+                                            UserInfo.profile.id = auth.currentUser.uid.toString()
                                             viewModel.insertUser(
                                                 User(
-                                                    id = UserInfo.uuid,
-                                                    fcm = UserInfo.fcm,
+                                                    id = UserInfo.profile.id,
+                                                    fcm = UserInfo.profile.fcm,
                                                     lastLoginTimestamp = getTimestamp()
                                                 )
                                             )
@@ -163,7 +163,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             }
 
             // Get new FCM registration token
-            UserInfo.fcm = task.result.toString()
+            UserInfo.profile.fcm = task.result.toString()
         })
     }
 

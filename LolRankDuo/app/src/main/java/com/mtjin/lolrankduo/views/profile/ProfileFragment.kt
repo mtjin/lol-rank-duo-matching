@@ -2,8 +2,10 @@ package com.mtjin.lolrankduo.views.profile
 
 import android.content.Intent
 import android.provider.MediaStore
+import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
 import com.mtjin.lolrankduo.R
 import com.mtjin.lolrankduo.base.BaseFragment
 import com.mtjin.lolrankduo.data.models.User
@@ -27,6 +29,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
         binding.vm = viewModel
         binding.toolbar.profileVm = viewModel
         initViewModelCallback()
+        viewModel.requestProfile()
     }
 
     private fun initViewModelCallback() {
@@ -55,9 +58,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
                 teamPositionList.add(binding.spTeamPosition2.selectedItem.toString())
                 viewModel.setUserInfo(
                     User(
-                        id = UserInfo.uuid,
+                        id = UserInfo.profile.id,
                         gameId = viewModel.gameId.value.toString(),
-                        profileImage = UserInfo.profileImage,
+                        profileImage = UserInfo.profile.profileImage,
                         positionList = positionList,
                         sex = binding.spSex.selectedItem.toString(),
                         tear = binding.spTear.selectedItem.toString(),
@@ -66,20 +69,69 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
                         lastLoginTimestamp = getTimestamp(),
                         teamPositionList = teamPositionList,
                         voice = binding.spVoice.selectedItem.toString() == "가능",
-                        fcm = UserInfo.fcm,
-                        historyIdList = UserInfo.historyIdList,
-                        recommend = UserInfo.recommend
+                        fcm = UserInfo.profile.fcm,
+                        historyIdList = UserInfo.profile.historyIdList,
+                        recommend = UserInfo.profile.recommend
                     )
                 )
             })
 
-            editProfileSuccess.observe(this@ProfileFragment, { success->
-                if(!success) showToast(getString(R.string.profile_edit_fail_msg))
+            editProfileSuccess.observe(this@ProfileFragment, { success ->
+                if (!success) showToast(getString(R.string.profile_edit_fail_msg))
             })
 
             isLottieLoading.observe(this@ProfileFragment, { loading ->
                 if (loading) showProgressDialog()
                 else hideProgressDialog()
+            })
+
+            requestProfileSuccess.observe(this@ProfileFragment, { profile ->
+                UserInfo.profile = profile
+                binding.run {
+                    Glide.with(thisContext).load(profile.profileImage).into(ivProfileImage)
+                    etGameId.setText(profile.gameId)
+                    etAge.setText(profile.age)
+                    var adapter = ArrayAdapter.createFromResource(
+                        thisContext,
+                        R.array.sex,
+                        android.R.layout.simple_spinner_item
+                    )
+                    var spinnerPosition = adapter.getPosition(profile.gameId)
+                    spSex.setSelection(spinnerPosition)
+                    adapter = ArrayAdapter.createFromResource(
+                        thisContext,
+                        R.array.tears,
+                        android.R.layout.simple_spinner_item
+                    )
+                    spinnerPosition = adapter.getPosition(profile.tear)
+                    spTear.setSelection(spinnerPosition)
+                    adapter = ArrayAdapter.createFromResource(
+                        thisContext,
+                        R.array.positions,
+                        android.R.layout.simple_spinner_item
+                    )
+                    spinnerPosition = adapter.getPosition(profile.positionList[0])
+                    spMyPosition1.setSelection(spinnerPosition)
+                    spinnerPosition = adapter.getPosition(profile.positionList[1])
+                    spMyPosition2.setSelection(spinnerPosition)
+                    spinnerPosition = adapter.getPosition(profile.teamPositionList[0])
+                    spTeamPosition1.setSelection(spinnerPosition)
+                    spinnerPosition = adapter.getPosition(profile.teamPositionList[1])
+                    spTeamPosition2.setSelection(spinnerPosition)
+                    adapter = ArrayAdapter.createFromResource(
+                        thisContext,
+                        R.array.voices,
+                        android.R.layout.simple_spinner_item
+                    )
+                    val voice: String = if (profile.voice) {
+                        "가능"
+                    } else {
+                        "불가능"
+                    }
+                    spinnerPosition = adapter.getPosition(voice)
+                    spVoice.setSelection(spinnerPosition)
+                    etIntroduce.setText(profile.introduce)
+                }
             })
         }
     }
