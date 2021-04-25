@@ -8,6 +8,10 @@ import com.mtjin.lolrankduo.databinding.FragmentMatchBinding
 
 class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match) {
     override fun init() {
+        initToolbar()
+    }
+
+    private fun initToolbar() {
         binding.toolbar.run {
             tbToolbar.title = getString(R.string.duo_matching_text)
             ivEdit.visibility = View.GONE

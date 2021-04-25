@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1092608462491",
+    "project_id": "lolrankduo-56c1d",
+    "storage_bucket": "lolrankduo-56c1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092608462491:android:b367ad203fd9d441ee003e",
+        "android_client_info": {
+          "package_name": "com.mtjin.lolrankduo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092608462491-7i1p282kam5teo2oim6381hmrqlqjgsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARiOj1x0R0aXJBIz237Ilb8lA_g3ei9pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092608462491-7i1p282kam5teo2oim6381hmrqlqjgsa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
