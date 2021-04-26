@@ -69,4 +69,9 @@
                 tools:layout="@layout/activity_main" />
         </navigation>
     </navigation>
+    <fragment
+        android:id="@+id/matchCompleteFragment"
+        android:name="com.mtjin.lolrankduo.MatchCompleteFragment"
+        android:label="fragment_match_complete"
+        tools:layout="@layout/fragment_match_complete" />
 </navigation>
