@@ -10,7 +10,7 @@ import com.mtjin.lolrankduo.base.BaseActivity
 import com.mtjin.lolrankduo.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-    private val sharedViewModel: MainSharedViewModel by viewModels()
+    val sharedViewModel: MainSharedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
