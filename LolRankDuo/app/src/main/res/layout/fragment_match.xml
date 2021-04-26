@@ -23,6 +23,7 @@
             android:layout_height="@dimen/height_60dp"
             android:layout_marginHorizontal="@dimen/margin_16dp"
             android:background="@color/colorWhiteBlue"
+            android:onClick="@{()->vm.clickDuoMatch()}"
             android:text="@string/duo_matching_start_text"
             android:textColor="@color/white"
             app:button_cornerRadius="@dimen/radius_16dp"
