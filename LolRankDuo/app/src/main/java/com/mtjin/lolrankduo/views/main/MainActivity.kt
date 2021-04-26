@@ -2,6 +2,7 @@ package com.mtjin.lolrankduo.views.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.mtjin.lolrankduo.R
@@ -9,6 +10,8 @@ import com.mtjin.lolrankduo.base.BaseActivity
 import com.mtjin.lolrankduo.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private val sharedViewModel: MainSharedViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initNavigation()
