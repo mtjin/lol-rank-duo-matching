@@ -50,7 +50,12 @@
         android:id="@+id/matchFragment"
         android:name="com.mtjin.lolrankduo.views.match.MatchFragment"
         android:label="fragment_match"
-        tools:layout="@layout/fragment_match" />
+        tools:layout="@layout/fragment_match" >
+        <action
+            android:id="@+id/action_matchFragment_to_matchCompleteFragment"
+            app:destination="@id/matchCompleteFragment"
+            app:launchSingleTop="true" />
+    </fragment>
     <fragment
         android:id="@+id/friendFragment"
         android:name="com.mtjin.lolrankduo.views.friend.FriendFragment"

@@ -11,7 +11,17 @@ import io.reactivex.rxjava3.core.Single
 class MatchRepositoryImpl(private val db: FirebaseFirestore) : MatchRepository {
     override fun requestDuoMatch(user: User): Single<User> {
         return Single.create { emitter ->
-
+            db.collection(DB_USER).whereEqualTo("capital", true)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        Log.d(TAG, "${document.id} => ${document.data}")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.w(TAG, "Error getting documents: ", exception)
+                    emitter.onError(exception)
+                }
         }
     }
 
