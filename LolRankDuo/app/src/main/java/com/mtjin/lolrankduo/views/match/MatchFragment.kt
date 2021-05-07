@@ -1,16 +1,16 @@
 package com.mtjin.lolrankduo.views.match
 
 import android.view.View
-import androidx.fragment.app.viewModels
 import com.mtjin.lolrankduo.R
 import com.mtjin.lolrankduo.base.BaseFragment
 import com.mtjin.lolrankduo.databinding.FragmentMatchBinding
 import com.mtjin.lolrankduo.views.main.MainActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match) {
 
-    private val viewModel: MatchViewModel by viewModels()
+    private val viewModel: MatchViewModel by viewModel()
 
     override fun init() {
         binding.vm = viewModel
