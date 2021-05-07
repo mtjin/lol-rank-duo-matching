@@ -12,6 +12,8 @@ import com.mtjin.lolrankduo.data.models.User
 import com.mtjin.lolrankduo.databinding.FragmentProfileBinding
 import com.mtjin.lolrankduo.utils.UserInfo
 import com.mtjin.lolrankduo.utils.extensions.getTimestamp
+import com.mtjin.lolrankduo.utils.extensions.toRankName
+import com.mtjin.lolrankduo.utils.extensions.toRankNum
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -50,12 +52,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
             })
 
             initUserInfo.observe(this@ProfileFragment, {
-                val positionList = ArrayList<String>()
-                positionList.add(binding.spMyPosition1.selectedItem.toString())
-                positionList.add(binding.spMyPosition2.selectedItem.toString())
-                val teamPositionList = ArrayList<String>()
-                teamPositionList.add(binding.spTeamPosition1.selectedItem.toString())
-                teamPositionList.add(binding.spTeamPosition2.selectedItem.toString())
+                val positionList = ArrayList<Int>()
+                positionList.add(binding.spMyPosition1.selectedItem.toString().toRankNum())
+                positionList.add(binding.spMyPosition2.selectedItem.toString().toRankNum())
+                val teamPositionList = ArrayList<Int>()
+                teamPositionList.add(binding.spTeamPosition1.selectedItem.toString().toRankNum())
+                teamPositionList.add(binding.spTeamPosition2.selectedItem.toString().toRankNum())
                 viewModel.setUserInfo(
                     User(
                         id = UserInfo.profile.id,
@@ -110,13 +112,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
                         R.array.positions,
                         android.R.layout.simple_spinner_item
                     )
-                    spinnerPosition = adapter.getPosition(profile.positionList[0])
+                    spinnerPosition = adapter.getPosition(profile.positionList[0].toRankName())
                     spMyPosition1.setSelection(spinnerPosition)
-                    spinnerPosition = adapter.getPosition(profile.positionList[1])
+                    spinnerPosition = adapter.getPosition(profile.positionList[1].toRankName())
                     spMyPosition2.setSelection(spinnerPosition)
-                    spinnerPosition = adapter.getPosition(profile.teamPositionList[0])
+                    spinnerPosition = adapter.getPosition(profile.teamPositionList[0].toRankName())
                     spTeamPosition1.setSelection(spinnerPosition)
-                    spinnerPosition = adapter.getPosition(profile.teamPositionList[1])
+                    spinnerPosition = adapter.getPosition(profile.teamPositionList[1].toRankName())
                     spTeamPosition2.setSelection(spinnerPosition)
                     adapter = ArrayAdapter.createFromResource(
                         thisContext,

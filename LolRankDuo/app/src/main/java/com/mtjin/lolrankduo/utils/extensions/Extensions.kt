@@ -1,7 +1,7 @@
 package com.mtjin.lolrankduo.utils.extensions
 
-fun String.toRankNum(rank: String): Int {
-    when (rank) {
+fun String.toRankNum(): Int {
+    when (this) {
         "Iron 4" -> return 0
         "Iron 3" -> return 1
         "Iron 2" -> return 2
@@ -33,8 +33,8 @@ fun String.toRankNum(rank: String): Int {
     return 0
 }
 
-fun Int.toRankName(rankNum: Int): String {
-    when (rankNum) {
+fun Int.toRankName(): String {
+    when (this) {
         0 -> return "Iron 4"
         1 -> return "Iron 3"
         2 -> return "Iron 2"
