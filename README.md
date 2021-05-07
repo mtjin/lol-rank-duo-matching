@@ -3,7 +3,7 @@
 
 <img src="https://user-images.githubusercontent.com/37071007/111019615-c2a08480-8403-11eb-9a26-a79a0a567eb1.png" width="30%"></img>
 
-커밋메시지 [출처](https://blog.ull.im/engineering/2019/03/10/logs-on-git.html)
+커밋메시지
      
       
      feat: 새로운 기능 추가 
