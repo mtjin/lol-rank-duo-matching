@@ -88,51 +88,55 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
             })
 
             requestProfileSuccess.observe(this@ProfileFragment, { profile ->
-                UserInfo.profile = profile
-                binding.run {
-                    Glide.with(thisContext).load(profile.profileImage).into(ivProfileImage)
-                    etGameId.setText(profile.gameId)
-                    etAge.setText(profile.age)
-                    var adapter = ArrayAdapter.createFromResource(
-                        thisContext,
-                        R.array.sex,
-                        android.R.layout.simple_spinner_item
-                    )
-                    var spinnerPosition = adapter.getPosition(profile.gameId)
-                    spSex.setSelection(spinnerPosition)
-                    adapter = ArrayAdapter.createFromResource(
-                        thisContext,
-                        R.array.tears,
-                        android.R.layout.simple_spinner_item
-                    )
-                    spinnerPosition = adapter.getPosition(profile.tear)
-                    spTear.setSelection(spinnerPosition)
-                    adapter = ArrayAdapter.createFromResource(
-                        thisContext,
-                        R.array.positions,
-                        android.R.layout.simple_spinner_item
-                    )
-                    spinnerPosition = adapter.getPosition(profile.positionList[0].toRankName())
-                    spMyPosition1.setSelection(spinnerPosition)
-                    spinnerPosition = adapter.getPosition(profile.positionList[1].toRankName())
-                    spMyPosition2.setSelection(spinnerPosition)
-                    spinnerPosition = adapter.getPosition(profile.teamPositionList[0].toRankName())
-                    spTeamPosition1.setSelection(spinnerPosition)
-                    spinnerPosition = adapter.getPosition(profile.teamPositionList[1].toRankName())
-                    spTeamPosition2.setSelection(spinnerPosition)
-                    adapter = ArrayAdapter.createFromResource(
-                        thisContext,
-                        R.array.voices,
-                        android.R.layout.simple_spinner_item
-                    )
-                    val voice: String = if (profile.voice) {
-                        "가능"
-                    } else {
-                        "불가능"
+                if (profile.gameId != "") {
+                    UserInfo.profile = profile
+                    binding.run {
+                        Glide.with(thisContext).load(profile.profileImage).into(ivProfileImage)
+                        etGameId.setText(profile.gameId)
+                        etAge.setText(profile.age)
+                        var adapter = ArrayAdapter.createFromResource(
+                            thisContext,
+                            R.array.sex,
+                            android.R.layout.simple_spinner_item
+                        )
+                        var spinnerPosition = adapter.getPosition(profile.gameId)
+                        spSex.setSelection(spinnerPosition)
+                        adapter = ArrayAdapter.createFromResource(
+                            thisContext,
+                            R.array.tears,
+                            android.R.layout.simple_spinner_item
+                        )
+                        spinnerPosition = adapter.getPosition(profile.tear)
+                        spTear.setSelection(spinnerPosition)
+                        adapter = ArrayAdapter.createFromResource(
+                            thisContext,
+                            R.array.positions,
+                            android.R.layout.simple_spinner_item
+                        )
+                        spinnerPosition = adapter.getPosition(profile.positionList[0].toRankName())
+                        spMyPosition1.setSelection(spinnerPosition)
+                        spinnerPosition = adapter.getPosition(profile.positionList[1].toRankName())
+                        spMyPosition2.setSelection(spinnerPosition)
+                        spinnerPosition =
+                            adapter.getPosition(profile.teamPositionList[0].toRankName())
+                        spTeamPosition1.setSelection(spinnerPosition)
+                        spinnerPosition =
+                            adapter.getPosition(profile.teamPositionList[1].toRankName())
+                        spTeamPosition2.setSelection(spinnerPosition)
+                        adapter = ArrayAdapter.createFromResource(
+                            thisContext,
+                            R.array.voices,
+                            android.R.layout.simple_spinner_item
+                        )
+                        val voice: String = if (profile.voice) {
+                            "가능"
+                        } else {
+                            "불가능"
+                        }
+                        spinnerPosition = adapter.getPosition(voice)
+                        spVoice.setSelection(spinnerPosition)
+                        etIntroduce.setText(profile.introduce)
                     }
-                    spinnerPosition = adapter.getPosition(voice)
-                    spVoice.setSelection(spinnerPosition)
-                    etIntroduce.setText(profile.introduce)
                 }
             })
         }
