@@ -2,6 +2,7 @@ package com.mtjin.lolrankduo.di
 
 import android.app.Application
 import com.kakao.auth.*
+import com.mtjin.lolrankduo.di.modules.apiModule
 import com.mtjin.lolrankduo.di.modules.firebaseModule
 import com.mtjin.lolrankduo.di.modules.repositoryModule
 import com.mtjin.lolrankduo.di.modules.viewModelModule
@@ -28,7 +29,8 @@ class MyApplication : Application() {
             modules(
                 repositoryModule,
                 viewModelModule,
-                firebaseModule
+                firebaseModule,
+                apiModule
             )
         }
     }
